@@ -40,9 +40,6 @@ public class RobotMove {
         System.out.println("(" + GRID_SIZE + "X" + GRID_SIZE + ")GRID paths = "
                 + paths(0, 0, BigInteger.ZERO));
 
-        System.out.println("-------\n"
-                + "Cache size: " + cache.size());
-
     }
 
     /**
@@ -73,8 +70,6 @@ public class RobotMove {
                      paths(row + 1, col, paths)
                 .add(paths(row, col + 1, paths))
                 .add(paths(row + 1, col + 1, paths)));
-
-        System.out.println("Value: " + cache.get(cacheKey));
 
         return cache.get(cacheKey);
 
