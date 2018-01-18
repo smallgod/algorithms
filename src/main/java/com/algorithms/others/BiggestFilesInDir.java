@@ -30,22 +30,6 @@ public class BiggestFilesInDir {
         File rootFile = new File("/Users/smallgod/Desktop/Biggest_files/");
         readFilesBFS(rootFile);
         //readFilesDFS(rootFile);
-
-
-//
-//        System.out.println();
-//
-//        Collections.sort(fileSizes, new FileSizes());
-//
-//        int k = 5;
-//        int mapSize = fileSizes.size() - 1;
-//
-//        for (int i = 0; i < k; i++) {
-//
-//            System.out.println("File name: " + fileSizes.get(mapSize - i).getFilePath());
-//            System.out.println("File size: " + fileSizes.get(mapSize - i).getSize() + " bytes");
-//            System.out.println("-------");
-//        }
     }
 
     static void readFilesDFS(File file) {
@@ -99,17 +83,13 @@ public class BiggestFilesInDir {
                 }
                 fileMap.put(currFile.getAbsolutePath(), currFile.length());
             }
-
         }
-        //System.out.println(fileMap.toString());
-        
         for(Map.Entry<String, Long> entry : fileMap.entrySet()){
             System.out.println(entry.getKey());
         }
 
         return fileMap;
     }
-
 }
 
 class FileSizes implements Comparator<FileSizes> {
