@@ -52,7 +52,7 @@ import java.util.TreeSet;
  *
  * @author smallgod
  */
-public class Solution_Accesscodes_3_3 {
+public class Solution_Accesscodes {
 
     /**
      * @param args the command line arguments
@@ -64,35 +64,25 @@ public class Solution_Accesscodes_3_3 {
         int int32BitMax = 2147483647;
         int initValue = 1;
 
-        //int[] array = {1, 1, 1, 1};
         int max = 6;
         int[] array = new int[max];
 
         for (int i = 0; i < max; i++) {
-            //array[i] = getRandomNumberInRange(1, 6);
             array[i] = i + 1;
         }
-        System.out.println("done gen array with length: " + array.length);
-        System.out.println("Array is: " + Arrays.toString(array));
-        System.out.println();
-        System.out.println("Lucky tripples: " + answer(array));
-        System.out.println();
 
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
 
         double seconds = (double) elapsedTime / 1000000000.0;
-        System.out.println("Time taken: " + elapsedTime + " nanos");
-        System.out.println("Time taken: " + String.valueOf(seconds) + " seconds");
     }
 
     static int answer(int[] l) {
 
-        //[1,2,3,4,5,6]
         int lastIndex = l.length - 1;
         int j = lastIndex - 1;
         int luckyTripples = 0;
-        //int[] luckyDoubleCount = new int[l.length];
+        
         Map<String, Integer> luckyDoubleCountCache = new HashMap<>();
 
         do {
@@ -102,9 +92,10 @@ public class Solution_Accesscodes_3_3 {
                     count++;
                 }
             }
+            
             luckyDoubleCountCache.put("" + l[j] + j, count);
-            //luckyDoubleCount[j] = count;
             j--;
+            
         } while (j >= 1);
 
         j = 1;
@@ -112,11 +103,12 @@ public class Solution_Accesscodes_3_3 {
             for (int i = 0; i < j; i++) {
                 if (isAMultiple(l[i], l[j])) {
 
-                    //luckyTripples += luckyDoubleCount[j];
                     luckyTripples += luckyDoubleCountCache.get("" + l[j] + j);
                 }
             }
+            
             j++;
+            
         } while (j < lastIndex);
 
         return luckyTripples;
